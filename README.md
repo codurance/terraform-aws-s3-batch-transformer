@@ -19,22 +19,21 @@ By leveraging AWS Step Functions in conjunction with Lambda functions, the archi
 
 # Usage
 
-**Example**
+**Example - Complete**
 ```
-module "ingest-s3-objects" {
+module "demo_s3_batch" {
 
-  source = "./modules/ingest-s3-objects"
+  source  = "codurance/terraform-aws-s3-batch-transformer/aws"
+  version = "1.0.2"
 
-  # Mandatory fields
-  bucket_name = "demo-code-vpc-flowlogs-bucket-tst" # The bucket where your objects are
+  # Mandatory
+  buckey_name = "MY_BUCKET_NAME"
 
-  # Optional
-  project = "ingest-s3-objects-module" # Used to name resources, naming convention
-  # bucket_prefix                 = "2024/03/01/"              # Use prefix to filter a subset of logs
-  # lambda_invoke_max_concurrency = 5 # Process 5 objects at a time. Balance this 
-
+  # Optional 
+  project                       = "team_demo"
+  bucket_prefix                 = ""
+  lambda_invoke_max_concurrency = 50
 }
-
 ```
 
 <!-- BEGIN_TF_DOCS -->
