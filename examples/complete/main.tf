@@ -1,7 +1,7 @@
 module "demo_s3_batch" {
 
   source  = "codurance/s3-batch-transformer/aws"
-  version = "1.0.2"
+  version = "1.0.3"
 
   # Mandatory
   bucket_name = "MY_BUCKET_NAME"
