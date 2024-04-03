@@ -8,3 +8,4 @@ module "demo_s3_batch" {
   bucket_prefix                 = ""
   lambda_invoke_max_concurrency = 50
 }
+
