@@ -40,37 +40,78 @@ module "ingest-s3-objects" {
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
-No requirements.
+The following requirements are needed by this module:
+
+- <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) (>= 1.0)
+
+- <a name="requirement_aws"></a> [aws](#requirement\_aws) (>= 5.30)
 
 ## Providers
 
-| Name | Version |
-|------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.42.0 |
+The following providers are used by this module:
+
+- <a name="provider_aws"></a> [aws](#provider\_aws) (>= 5.30)
 
 ## Modules
 
-| Name | Source | Version |
-|------|--------|---------|
-| <a name="module_lambda_batch_ingestion"></a> [lambda\_batch\_ingestion](#module\_lambda\_batch\_ingestion) | terraform-aws-modules/lambda/aws | n/a |
+The following Modules are called:
+
+### <a name="module_lambda_batch_ingestion"></a> [lambda\_batch\_ingestion](#module\_lambda\_batch\_ingestion)
+
+Source: terraform-aws-modules/lambda/aws
+
+Version:
 
 ## Resources
 
-| Name | Type |
-|------|------|
-| [aws_iam_policy.lambda_exec](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
-| [aws_iam_policy.snf_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
-| [aws_iam_role.sfn](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
-| [aws_iam_role_policy_attachment.policy_1](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
-| [aws_sfn_state_machine.sfn_state_machine](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sfn_state_machine) | resource |
+The following resources are used by this module:
 
-## Inputs
+- [aws_iam_policy.lambda_exec](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) (resource)
+- [aws_iam_policy.snf_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) (resource)
+- [aws_iam_role.sfn](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) (resource)
+- [aws_iam_role_policy_attachment.policy_1](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) (resource)
+- [aws_sfn_state_machine.sfn_state_machine_prefix_false](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sfn_state_machine) (resource)
+- [aws_sfn_state_machine.sfn_state_machine_prefix_true](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sfn_state_machine) (resource)
 
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| <a name="input_bucket_name"></a> [bucket\_name](#input\_bucket\_name) | The target bucket name, where you have your targetr objetcs | `string` | n/a | yes |
-| <a name="input_lambda_invoke_max_concurrency"></a> [lambda\_invoke\_max\_concurrency](#input\_lambda\_invoke\_max\_concurrency) | Number of concurrent invocations made by step functions. The bigger the concurrency is the more stress the Opensearch will be expose to. The default value was assigned based on load tests, we strongly recommend to keep this value. | `number` | `5` | no |
-| <a name="input_project"></a> [project](#input\_project) | Set the project name. This variable is used to name resources. | `string` | `"ingest-s3-objects"` | no |
+## Required Inputs
+
+No required inputs.
+
+## Optional Inputs
+
+The following input variables are optional (have default values):
+
+### <a name="input_bucket_name"></a> [bucket\_name](#input\_bucket\_name)
+
+Description: The target bucket name
+
+Type: `string`
+
+Default: `""`
+
+### <a name="input_bucket_prefix"></a> [bucket\_prefix](#input\_bucket\_prefix)
+
+Description: Set the bucket prefix for the target objects. In some cases objects are grouped by year, month, day, hour, etc .
+
+Type: `string`
+
+Default: `""`
+
+### <a name="input_lambda_invoke_max_concurrency"></a> [lambda\_invoke\_max\_concurrency](#input\_lambda\_invoke\_max\_concurrency)
+
+Description: Number of concurrent invocations made by step functions. The bigger the concurrency is the more stress the Opensearch will be expose to. The default value was assigned based on load tests, we strongly recommend to keep this value.
+
+Type: `number`
+
+Default: `5`
+
+### <a name="input_project"></a> [project](#input\_project)
+
+Description: Project name, this label is used to name resources
+
+Type: `string`
+
+Default: `"s3-batch-transform"`
 
 ## Outputs
 

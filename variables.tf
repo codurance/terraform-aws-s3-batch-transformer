@@ -13,7 +13,7 @@ variable "bucket_name" {
 variable "bucket_prefix" {
   type        = string
   default     = ""
-  description = "Set the bucket prefix for the target objects. In some cases objects are grouped by year, month, day, hour, etc . "
+  description = "Bucket prefix to filter a subset of objects. If objects are grouped by a time-based prefix, this field is helpful to specify the time-window to process."
 }
 
 variable "lambda_invoke_max_concurrency" {
