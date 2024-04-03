@@ -1,12 +1,13 @@
 variable "project" {
   type        = string
-  default     = "ingest-s3-objects"
-  description = "Set the project name. This variable is used to name resources."
+  default     = "s3-batch-transform"
+  description = "Project name, this label is used to name resources"
 }
 
 variable "bucket_name" {
   type        = string
-  description = "The target bucket name, where you have your targetr objetcs"
+  default     = ""
+  description = "The target bucket name"
 }
 
 variable "bucket_prefix" {

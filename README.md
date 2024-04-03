@@ -1,10 +1,23 @@
-## Usage
+# Overview
 
-# Ingest S3 Objects
-With this powerful tool, you can effortlessly select and process any number of objects from your Amazon S3 bucket with ease. Whether you're managing vast amounts of data or just a few files, this module streamlines the process, saving you time and effort.
+This Terraform module facilitates the deployment of a scalable and efficient data flow architecture. It is designed to read data from Amazon S3, transform the data as required, and deliver it to any data visualization platform or storage location of choice. By leveraging Terraform, users can easily provision and manage the necessary infrastructure components to establish a scalable data pipeline.
 
-The heart of this module lies in its Lambda function, which comes pre-loaded with basic code tailored to process CSV files. This serves as a convenient starting point, allowing you to quickly test the functionality of the module. Moreover, this code can be easily customized and adapted to suit your specific use case, ensuring seamless integration into your workflow.
-## Usage
+**Although this module is fully functional and ready to use, it's important to note that this is a demo version intended for demonstration purposes only. In order to fully meet your needs, further development and customization is required!**
+
+## Architecture Choices
+
+The architecture of this data flow module relies on several key components:
+
+- Amazon S3: Serves as the primary data source, providing a scalable and durable storage solution for ingesting raw data. This bucket is not managed by this module, it should be referenced as an input parameter.
+
+- AWS Step Functions: Utilized for orchestrating the data processing workflow. Step Functions provide a reliable and scalable way to coordinate the execution of individual tasks, allowing for complex data transformation workflows.
+
+- AWS Lambda: Each individual object within the S3 bucket triggers a Lambda function to handle reading, transformation, and delivery. 
+
+By leveraging AWS Step Functions in conjunction with Lambda functions, the architecture ensures scalability, fault tolerance, and cost-effectiveness, enabling seamless data processing at scale.
+
+
+# Usage
 
 **Example**
 ```

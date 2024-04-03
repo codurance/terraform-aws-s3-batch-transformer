@@ -2,9 +2,9 @@ module "lambda_batch_ingestion" {
   source = "terraform-aws-modules/lambda/aws"
 
   function_name = var.project
-  description   = "This function is invoked by AWS Step Functions, one execution per S3 object to ingest in Opensearch."
+  description   = "Invoked by AWS Step Functions for S3 batch processing"
   handler       = "lambda_function.lambda_handler"
-  runtime       = "python3.10"
+  runtime       = "python3.12"
   timeout       = 60
   memory_size   = 128
 
@@ -19,9 +19,5 @@ module "lambda_batch_ingestion" {
 
   environment_variables = {
     "BUCKET_NAME" : var.bucket_name
-  }
-
-  tags = {
-    Name = var.project
   }
 }
