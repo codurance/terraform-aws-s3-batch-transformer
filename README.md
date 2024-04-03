@@ -23,11 +23,11 @@ By leveraging AWS Step Functions in conjunction with Lambda functions, the archi
 ```
 module "demo_s3_batch" {
 
-  source  = "codurance/terraform-aws-s3-batch-transformer/aws"
-  version = "1.0.2"
+  source  = "codurance/s3-batch-transformer/aws"
+  version = "1.0.3"
 
   # Mandatory
-  buckey_name = "MY_BUCKET_NAME"
+  bucket_name = "MY_BUCKET_NAME"
 
   # Optional 
   project                       = "team_demo"

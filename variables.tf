@@ -21,3 +21,9 @@ variable "lambda_invoke_max_concurrency" {
   default     = 5
   description = "Number of concurrent invocations made by step functions. The bigger the concurrency is the more stress the Opensearch will be expose to. The default value was assigned based on load tests, we strongly recommend to keep this value."
 }
+
+variable "region" {
+  type        = string
+  default     = "eu-west-1"
+  description = "AWS region"
+}
